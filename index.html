@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ბოლო ზარი — მე-12 გ კლასი 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap');
+
+:root {
+  --gold:#C9A84C; --gold-light:#F0D080; --gold-dim:#8B6914;
+  --dark:#080810; --dark2:#0D0D1A; --dark3:#121225;
+  --white:#F8F4EE; --white-dim:rgba(248,244,238,0.72);
+  --glass:rgba(255,255,255,0.04); --glass-b:rgba(201,168,76,0.22);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;overflow-x:hidden;}
+body{background:var(--dark);color:var(--white);font-family:'Montserrat',sans-serif;overflow-x:hidden;}
+
+/* ── CURTAIN ── */
+#curtain-wrap{position:fixed;inset:0;z-index:1000;overflow:hidden;}
+
+#c-left,#c-right{
+  position:absolute;top:0;height:100%;width:52%;
+  will-change:transform,filter;
+  backface-visibility:hidden;
+  transform:translate3d(0,0,0);
+}
+#c-left{
+  left:0;transform-origin:left center;
+  background:
+    linear-gradient(90deg,rgba(0,0,0,0.38) 0%,rgba(255,255,255,0.03) 10%,rgba(0,0,0,0.2) 22%,rgba(255,255,255,0.035) 38%,rgba(0,0,0,0.28) 55%,rgba(255,255,255,0.025) 72%,rgba(0,0,0,0.42) 100%),
+    linear-gradient(180deg,#520808 0%,#7A1212 12%,#9B1E1E 28%,
+      #8B1A1A 48%,#9B1E1E 65%,#7A1212 82%,#520808 100%);
+  box-shadow:inset -10px 0 30px rgba(0,0,0,0.6),inset -30px 0 60px rgba(0,0,0,0.35),inset 6px 0 18px rgba(255,255,255,0.06);
+}
+#c-right{
+  right:0;transform-origin:right center;
+  background:
+    linear-gradient(90deg,rgba(0,0,0,0.42) 0%,rgba(255,255,255,0.025) 28%,rgba(0,0,0,0.28) 45%,rgba(255,255,255,0.035) 62%,rgba(0,0,0,0.2) 78%,rgba(255,255,255,0.03) 90%,rgba(0,0,0,0.38) 100%),
+    linear-gradient(180deg,#520808 0%,#7A1212 12%,#9B1E1E 28%,
+      #8B1A1A 48%,#9B1E1E 65%,#7A1212 82%,#520808 100%);
+  box-shadow:inset 10px 0 30px rgba(0,0,0,0.6),inset 30px 0 60px rgba(0,0,0,0.35),inset -6px 0 18px rgba(255,255,255,0.06);
+}
+/* fold lines */
+#c-left::after,#c-right::after{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(90deg,
+    rgba(0,0,0,0.2),transparent 12%,rgba(255,255,255,0.04) 26%,
+    rgba(0,0,0,0.24) 42%,transparent 58%,rgba(255,255,255,0.035) 74%,
+    rgba(0,0,0,0.26));
+  opacity:0.82;
+}
+
+/* valance */
+#c-val{
+  position:absolute;top:0;left:0;right:0;height:72px;z-index:2;
+  background:linear-gradient(180deg,#3A0505 0%,#5C0A0A 50%,#520808 100%);
+  box-shadow:0 4px 24px rgba(0,0,0,0.85);
+}
+#c-val::after{
+  content:'';position:absolute;bottom:-1px;left:0;right:0;height:14px;
+  background:repeating-linear-gradient(90deg,#7A1212 0,#520808 22px,#7A1212 44px);
+  clip-path:polygon(0 0,2% 100%,4% 0,6% 100%,8% 0,10% 100%,12% 0,14% 100%,16% 0,18% 100%,20% 0,22% 100%,24% 0,26% 100%,28% 0,30% 100%,32% 0,34% 100%,36% 0,38% 100%,40% 0,42% 100%,44% 0,46% 100%,48% 0,50% 100%,52% 0,54% 100%,56% 0,58% 100%,60% 0,62% 100%,64% 0,66% 100%,68% 0,70% 100%,72% 0,74% 100%,76% 0,78% 100%,80% 0,82% 100%,84% 0,86% 100%,88% 0,90% 100%,92% 0,94% 100%,96% 0,98% 100%,100% 0,100% 0,0 0);
+}
+
+/* open animation */
+#c-left.open  {animation:curtL 1.55s cubic-bezier(0.22,1,0.36,1) 0.28s forwards;}
+#c-right.open {animation:curtR 1.55s cubic-bezier(0.22,1,0.36,1) 0.28s forwards;}
+@keyframes curtL{
+  0%{transform:translate3d(0,0,0);filter:brightness(1);}
+  100%{transform:translate3d(-112%,0,0);filter:brightness(0.82);}
+}
+@keyframes curtR{
+  0%{transform:translate3d(0,0,0);filter:brightness(1);}
+  100%{transform:translate3d(112%,0,0);filter:brightness(0.82);}
+}
+#curtain-wrap.done{display:none;}
+
+/* ── BACKGROUND ── */
+#bg-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;}
+body::before{
+  content:'';position:fixed;inset:0;opacity:0.3;z-index:1;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:18px 40px;display:flex;align-items:center;justify-content:space-between;
+  background:linear-gradient(180deg,rgba(8,8,16,0.92) 0%,transparent 100%);
+  backdrop-filter:blur(8px);
+}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.1rem;letter-spacing:0.15em;color:var(--gold);}
+.nav-links{display:flex;gap:28px;}
+.nav-links a{font-size:0.67rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--white-dim);text-decoration:none;transition:color .3s;}
+.nav-links a:hover{color:var(--gold);}
+@media(max-width:600px){.nav-links{display:none;}nav{padding:14px 20px;}}
+
+/* ── HERO ── */
+#hero{
+  min-height:100vh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;position:relative;overflow:hidden;padding:20px;
+}
+#three-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;}
+.hero-content{position:relative;z-index:5;opacity:0;transition:opacity 1.2s ease 0.4s;}
+.hero-content.visible{opacity:1;}
+
+.h-eyebrow{font-size:clamp(0.6rem,1.4vw,0.75rem);letter-spacing:0.4em;text-transform:uppercase;color:var(--gold-light);margin-bottom:20px;}
+.h-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(3.5rem,12vw,9rem);
+  font-weight:300;line-height:0.9;letter-spacing:0.02em;
+}
+.h-title .gold-word{
+  background:linear-gradient(90deg,var(--gold-dim),var(--gold-light),var(--gold),var(--gold-light),var(--gold-dim));
+  background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  animation:shimmer 4s linear infinite;
+}
+.h-class{
+  display:block;font-size:clamp(1.5rem,4.5vw,3.5rem);
+  font-style:italic;color:var(--gold);margin-top:12px;
+}
+.h-year{
+  font-family:'Cormorant Garamond',serif;font-size:clamp(0.9rem,2vw,1.4rem);
+  letter-spacing:0.45em;color:var(--white-dim);margin-top:8px;font-weight:300;
+}
+.h-datebox{
+  margin-top:38px;display:inline-flex;align-items:center;gap:20px;
+  border:1px solid var(--glass-b);background:var(--glass);
+  padding:13px 30px;backdrop-filter:blur(14px);border-radius:2px;position:relative;
+}
+.h-datebox::before{
+  content:'';position:absolute;top:0;left:15%;right:15%;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+}
+.h-datebox span{font-size:0.72rem;letter-spacing:0.2em;color:var(--gold-light);}
+.h-datebox .sep{width:1px;height:16px;background:var(--glass-b);}
+
+.scroll-cue{
+  position:absolute;bottom:36px;display:flex;flex-direction:column;align-items:center;gap:8px;
+  opacity:0;transition:opacity 1s ease 1.2s;
+}
+.scroll-cue.visible{opacity:1;}
+.scroll-cue span{font-size:0.57rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(248,244,238,0.35);}
+.sc-line{width:1px;height:48px;background:linear-gradient(180deg,var(--gold),transparent);animation:lp 2s ease infinite;}
+@keyframes lp{0%,100%{opacity:0.35;}50%{opacity:1;}}
+
+/* ── SHARED ── */
+section{position:relative;z-index:2;}
+.sec-in{max-width:960px;margin:0 auto;padding:0 24px;}
+.s-eye{font-size:0.62rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--gold);text-align:center;margin-bottom:14px;}
+.s-ttl{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,5vw,3.3rem);font-weight:300;text-align:center;line-height:1.2;}
+.gdiv{width:1px;height:70px;background:linear-gradient(180deg,transparent,var(--gold),transparent);margin:0 auto;}
+.reveal{opacity:0;transform:translateY(34px);transition:opacity 0.85s ease,transform 0.85s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.3s;}.d4{transition-delay:.4s;}
+@keyframes shimmer{0%{background-position:-200% center;}100%{background-position:200% center;}}
+
+/* ── COUNTDOWN ── */
+#countdown{padding:88px 20px;text-align:center;}
+.cd-grid{display:flex;justify-content:center;gap:clamp(10px,2.5vw,34px);flex-wrap:wrap;margin-top:42px;}
+.cd-item{
+  background:var(--glass);border:1px solid var(--glass-b);
+  backdrop-filter:blur(20px);padding:26px 20px;min-width:86px;border-radius:4px;position:relative;overflow:hidden;
+}
+.cd-item::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+.cd-num{
+  font-family:Arial,Helvetica,sans-serif;font-size:clamp(2.2rem,5vw,3.6rem);
+  font-weight:400;line-height:1;
+  background:linear-gradient(90deg,var(--gold-dim),var(--gold-light),var(--gold),var(--gold-light),var(--gold-dim));
+  background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  animation:shimmer 4s linear infinite;
+}
+.cd-unit{font-size:0.57rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--white-dim);margin-top:6px;}
+
+/* ── INVITE CARD ── */
+#invitation{padding:88px 20px;}
+.inv-card{
+  max-width:680px;margin:0 auto;
+  background:var(--glass);border:1px solid var(--glass-b);
+  backdrop-filter:blur(30px);border-radius:6px;
+  padding:clamp(36px,6vw,68px) clamp(26px,6vw,68px);
+  position:relative;overflow:hidden;text-align:center;
+}
+.inv-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+.inv-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold-dim),transparent);}
+.corner{position:absolute;width:28px;height:28px;border-color:var(--gold-dim);border-style:solid;opacity:0.5;}
+.corner.tl{top:10px;left:10px;border-width:1px 0 0 1px;}
+.corner.tr{top:10px;right:10px;border-width:1px 1px 0 0;}
+.corner.bl{bottom:10px;left:10px;border-width:0 0 1px 1px;}
+.corner.br{bottom:10px;right:10px;border-width:0 1px 1px 0;}
+.inv-school{font-size:0.6rem;letter-spacing:0.18em;color:var(--gold);line-height:1.8;margin-bottom:22px;text-transform:uppercase;}
+.inv-big{font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,4vw,2.7rem);font-weight:300;line-height:1.35;margin-bottom:22px;}
+.inv-big em{color:var(--gold);font-style:italic;}
+.inv-body{font-size:0.8rem;color:var(--white-dim);line-height:1.95;letter-spacing:0.04em;}
+.inv-sig{margin-top:30px;font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-style:italic;color:var(--gold-light);}
+
+/* ── DETAILS ── */
+#details{padding:88px 20px;}
+.dg{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:18px;margin-top:48px;}
+.dc{
+  background:var(--glass);border:1px solid var(--glass-b);
+  backdrop-filter:blur(20px);padding:34px 26px;border-radius:4px;
+  position:relative;overflow:hidden;transition:transform .3s,border-color .3s;
+}
+.dc:hover{transform:translateY(-4px);border-color:rgba(201,168,76,0.45);}
+.dc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .3s;}
+.dc:hover::before{opacity:1;}
+.di{font-size:1.75rem;margin-bottom:14px;display:block;}
+.dc h3{font-size:0.59rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:9px;}
+.dv{font-family:'Cormorant Garamond',serif;font-size:1.65rem;font-weight:300;line-height:1.2;}
+.ds{font-size:0.71rem;color:var(--white-dim);margin-top:6px;letter-spacing:0.04em;}
+
+/* ── SCHEDULE ── */
+#schedule{padding:88px 20px;}
+.sl{margin-top:48px;max-width:580px;margin-left:auto;margin-right:auto;}
+.si{display:flex;gap:22px;align-items:flex-start;padding:22px 0;border-bottom:1px solid rgba(201,168,76,0.11);}
+.si:last-child{border-bottom:none;}
+.st{font-family:Arial,Helvetica,sans-serif;font-size:1.4rem;color:var(--gold);min-width:76px;font-weight:400;line-height:1;}
+.si h4{font-size:0.8rem;letter-spacing:0.05em;margin-bottom:4px;}
+.si p{font-size:0.7rem;color:var(--white-dim);line-height:1.65;}
+.digits{font-family:Arial,Helvetica,sans-serif!important;font-weight:400;}
+
+/* ── FINALE ── */
+#finale{
+  min-height:80vh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;padding:96px 24px;position:relative;overflow:hidden;
+}
+#finale::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 58% 52% at 50% 50%,rgba(139,26,26,0.07) 0%,rgba(201,168,76,0.05) 40%,transparent 70%);
+}
+.fin-orn{font-family:'Cormorant Garamond',serif;font-size:3rem;color:var(--gold);opacity:0.4;margin-bottom:18px;animation:fy 4s ease-in-out infinite;}
+.fin-q{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.7rem,5vw,3.6rem);font-weight:300;font-style:italic;
+  line-height:1.38;max-width:800px;
+}
+.fin-q em{color:var(--gold);font-style:normal;}
+.fhr{width:78px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:26px auto;}
+.fin-sig{font-family:'Cormorant Garamond',serif;font-size:clamp(1rem,2.5vw,1.5rem);font-style:italic;color:var(--gold-light);letter-spacing:0.05em;}
+.fin-school{font-size:0.6rem;letter-spacing:0.15em;color:rgba(248,244,238,0.3);margin-top:12px;text-transform:uppercase;line-height:2.2;}
+@keyframes fy{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
+
+footer{
+  text-align:center;padding:34px 20px;
+  border-top:1px solid var(--glass-b);
+  font-size:0.58rem;letter-spacing:0.18em;
+  color:rgba(255,255,255,0.16);text-transform:uppercase;
+  position:relative;z-index:2;
+}
+</style>
+</head>
+<body>
+
+<!-- ══ CURTAIN ══ -->
+  <div id="curtain-wrap">
+  <div id="c-val"></div>
+  <div id="c-left"></div>
+  <div id="c-right"></div>
+</div>
+
+<canvas id="bg-canvas"></canvas>
+
+<nav>
+  <div class="nav-logo">✦ ბოლო ზარი 2026</div>
+  <div class="nav-links">
+    <a href="#details">დეტალები</a>
+    <a href="#schedule">განრიგი</a>
+    <a href="#finale">ფინალი</a>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section id="hero">
+  <canvas id="three-canvas"></canvas>
+  <div class="hero-content" id="heroContent">
+    <p class="h-eyebrow">გიწვევთ ბოლო ზარზე</p>
+    <h1 class="h-title">
+      ბოლო <span class="gold-word">ზარი</span>
+      <span class="h-class">მე-12 გ კლასი</span>
+    </h1>
+    <p class="h-year">2 0 2 6</p>
+    <div class="h-datebox">
+      <span>21 მაისი</span>
+      <div class="sep"></div>
+      <span>2026 წელი</span>
+      <div class="sep"></div>
+      <span>თელავი</span>
+    </div>
+  </div>
+  <div class="scroll-cue" id="scrollCue">
+    <span>გადაახვიე</span>
+    <div class="sc-line"></div>
+  </div>
+</section>
+
+<div class="gdiv"></div>
+
+<!-- ══ COUNTDOWN ══ -->
+<section id="countdown">
+  <p class="s-eye reveal">ღონისძიებამდე დარჩა</p>
+  <div class="cd-grid">
+    <div class="cd-item reveal d1"><div class="cd-num" id="cd-d">00</div><div class="cd-unit">დღე</div></div>
+    <div class="cd-item reveal d2"><div class="cd-num" id="cd-h">00</div><div class="cd-unit">საათი</div></div>
+    <div class="cd-item reveal d3"><div class="cd-num" id="cd-m">00</div><div class="cd-unit">წუთი</div></div>
+    <div class="cd-item reveal d4"><div class="cd-num" id="cd-s">00</div><div class="cd-unit">წამი</div></div>
+  </div>
+</section>
+
+<div class="gdiv"></div>
+
+<!-- ══ INVITE CARD ══ -->
+<section id="invitation">
+  <div class="sec-in">
+    <div class="inv-card reveal">
+      <div class="corner tl"></div><div class="corner tr"></div>
+      <div class="corner bl"></div><div class="corner br"></div>
+      <p class="inv-school">
+        სსიპ მერაბ კოსტავას სახელობის<br>
+        ქალაქ თელავის N4 საჯარო სკოლა
+      </p>
+      <h2 class="inv-big">
+        გიწვევთ <em>ბოლო ზარის</em><br>
+        საზეიმო ღონისძიებაზე
+      </h2>
+      <p class="inv-body">
+        ეს არის განსაკუთრებული საღამო — სავსე სიხარულით,<br>
+        მოგონებებით და გრძნობებით, რომელიც სიტყვებს სცდება.
+      </p>
+      <p class="inv-sig">— სიყვარულით, მე-12 გ კლასი ✦</p>
+    </div>
+  </div>
+</section>
+
+<div class="gdiv"></div>
+
+<!-- ══ DETAILS ══ -->
+<section id="details">
+  <div class="sec-in">
+    <p class="s-eye reveal">ღონისძიების დეტალები</p>
+    <h2 class="s-ttl reveal">ადგილი <em style="color:var(--gold);font-style:italic;font-family:'Cormorant Garamond',serif">& დრო</em></h2>
+    <div class="dg">
+      <div class="dc reveal d1"><span class="di">📅</span><h3>თარიღი</h3><div class="dv">21 მაისი</div><div class="ds">2026 წელი · ხუთშაბათი</div></div>
+      <div class="dc reveal d2"><span class="di">⏰</span><h3>დრო</h3><div class="dv digits">11:00</div><div class="ds">ღონისძიების დასაწყისი</div></div>
+      <div class="dc reveal d3"><span class="di">📍</span><h3>ადგილი</h3><div class="dv">ქ. თელავი</div><div class="ds">შეავსე ლოკაცია / სახელი</div></div>
+      <div class="dc reveal d4"><span class="di">🏫</span><h3>სკოლა</h3><div class="dv" style="font-size:1.1rem;">N4 საჯარო სკოლა</div><div class="ds">სსიპ მ. კოსტავას სახ. · თელავი</div></div>
+      <div class="dc reveal d2"><span class="di">👔</span><h3>სამოსი</h3><div class="dv">Dress Code</div><div class="ds">ელეგანტური · ფორმალური</div></div>
+      <div class="dc reveal d3"><span class="di">🎓</span><h3>კლასი</h3><div class="dv">მე-12 გ</div><div class="ds">გამოშვება 2026</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="gdiv"></div>
+
+<!-- ══ SCHEDULE ══ -->
+<section id="schedule">
+  <div class="sec-in">
+    <p class="s-eye reveal">პროგრამა</p>
+    <h2 class="s-ttl reveal">დღის <em style="color:var(--gold);font-style:italic;font-family:'Cormorant Garamond',serif">განრიგი</em></h2>
+    <div class="sl">
+      <div class="si reveal d1"><div class="st">11:00</div><div><h4>კარის გახსნა</h4><p>სტუმრების მიღება · სადღესასწაულო ატმოსფერო</p></div></div>
+      <div class="si reveal d2"><div class="st">—:—</div><div><h4>ზეიმის გახსნა</h4><p>სიტყვა · მისალმება · კლასის ისტორია</p></div></div>
+      <div class="si reveal d3"><div class="st">—:—</div><div><h4>სადღეგრძელოები & სუფრა</h4><p>საზეიმო ვახშამი · ტოსტები · მოგონებები</p></div></div>
+      <div class="si reveal d4"><div class="st">—:—</div><div><h4>კონცერტი & ცეკვა</h4><p>ლაივ მუსიკა · სპეციალური ნომრები</p></div></div>
+      <div class="si reveal d2"><div class="st">—:—</div><div><h4>სიურპრიზი 🎁</h4><p>განსაკუთრებული მომენტი</p></div></div>
+      <div class="si reveal d3"><div class="st">—:—</div><div><h4>ბოლო ზარი 🔔</h4><p>სიმბოლური მომენტი — ყველა ერთად</p></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="gdiv"></div>
+
+<!-- ══ FINALE ══ -->
+<section id="finale">
+  <div class="fin-orn reveal">✦</div>
+  <blockquote class="fin-q reveal">
+    „ბოლო ზარი —<br>
+    <em>დასასრული</em>, რომელიც<br>
+    ახალ <em>დასაწყისს</em> ნიშნავს"
+  </blockquote>
+  <div class="fhr reveal"></div>
+  <p class="fin-sig reveal">სიყვარულით, მე-12 გ კლასი</p>
+  <p class="fin-school reveal">
+    სსიპ მერაბ კოსტავას სახელობის<br>
+    ქალაქ თელავის N4 საჯარო სკოლა<br>
+    გამოშვება · 2026
+  </p>
+</section>
+
+<footer>© 2026 · მე-12 გ კლასი · სსიპ N4 საჯარო სკოლა, თელავი ✦ created by DR.IMEDO🩺</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+/* ── BACKGROUND STARS ── */
+const bgC=document.getElementById('bg-canvas'),bgX=bgC.getContext('2d');
+let BW,BH;
+function bgR(){BW=bgC.width=window.innerWidth;BH=bgC.height=window.innerHeight;}
+bgR();window.addEventListener('resize',bgR);
+const bS=Array.from({length:220},()=>({x:Math.random(),y:Math.random(),r:Math.random()*1.1+0.2,t:Math.random()*Math.PI*2,sp:Math.random()*0.018+0.004}));
+const gP=Array.from({length:35},()=>({x:Math.random()*window.innerWidth,y:Math.random()*window.innerHeight,vy:-(Math.random()*0.4+0.12),life:Math.random(),r:Math.random()*1.6+0.3}));
+let bT=0;
+(function bl(){
+  bT+=0.008;bgX.clearRect(0,0,BW,BH);
+  const g=bgX.createRadialGradient(BW*.5,BH*.3,0,BW*.5,BH*.5,BH);
+  g.addColorStop(0,'rgba(15,10,30,0.97)');g.addColorStop(1,'rgba(8,8,16,0.99)');
+  bgX.fillStyle=g;bgX.fillRect(0,0,BW,BH);
+  for(const s of bS){s.t+=s.sp;const a=(Math.sin(s.t)*0.32+0.68)*0.82;bgX.beginPath();bgX.arc(s.x*BW,s.y*BH,s.r,0,Math.PI*2);bgX.fillStyle=`rgba(248,244,238,${a})`;bgX.fill();}
+  for(const d of gP){d.life+=0.003;d.y+=d.vy;if(d.life>1){d.life=0;d.x=Math.random()*BW;d.y=BH+10;}const a=Math.sin(d.life*Math.PI)*0.45;bgX.beginPath();bgX.arc(d.x,d.y,d.r,0,Math.PI*2);bgX.fillStyle=`rgba(201,168,76,${a})`;bgX.fill();}
+  requestAnimationFrame(bl);
+})();
+
+/* ── THREE.JS BELL ── */
+(function(){
+  const tc=document.getElementById('three-canvas');
+  const rend=new THREE.WebGLRenderer({canvas:tc,antialias:true,alpha:true});
+  rend.setPixelRatio(Math.min(devicePixelRatio,2));
+  rend.setSize(innerWidth,innerHeight);rend.setClearColor(0,0);
+  const scene=new THREE.Scene();
+  const cam=new THREE.PerspectiveCamera(52,innerWidth/innerHeight,0.1,100);
+  cam.position.set(0,0,6.5);
+
+  scene.add(new THREE.AmbientLight(0xffffff,0.22));
+  const kL=new THREE.PointLight(0xF0D080,3.2,20);kL.position.set(4,5,4);scene.add(kL);
+  const fL=new THREE.PointLight(0x8B1A1A,0.9,12);fL.position.set(-4,-2,2);scene.add(fL);
+  const rL=new THREE.DirectionalLight(0xffffff,0.25);rL.position.set(-2,3,-2);scene.add(rL);
+
+  const gM=new THREE.MeshStandardMaterial({color:0xC9A84C,metalness:0.92,roughness:0.16});
+  const dM=new THREE.MeshStandardMaterial({color:0x7A5010,metalness:0.85,roughness:0.28});
+
+  // Bell group — shifted RIGHT of center (x=2.6) so text is unobstructed
+  const bG=new THREE.Group();
+  bG.position.set(2.8,-0.2,0);
+  scene.add(bG);
+
+  // True bell profile: narrow top, wide flared bottom
+  const pts=[];
+  for(let i=0;i<=36;i++){
+    const t=i/36; // 0=top(narrow), 1=bottom(wide, open)
+    let r;
+    if(t<0.12) r=0.10+t*1.2;           // thin neck
+    else if(t<0.3) r=0.24+(t-0.12)*0.6; // gradual curve
+    else r=0.35+Math.pow((t-0.3)/0.7,0.5)*1.05; // strong flare
+    pts.push(new THREE.Vector2(r, t*2.4-1.2));
+  }
+  const bGeo=new THREE.LatheGeometry(pts,52);
+  const bMesh=new THREE.Mesh(bGeo,gM);
+  bMesh.rotation.x=Math.PI; // open end faces down
+  bG.add(bMesh);
+
+  // Rim ring at open end
+  const rimG=new THREE.TorusGeometry(1.38,0.09,12,52);
+  const rim=new THREE.Mesh(rimG,gM);rim.position.y=-1.2;bG.add(rim);
+
+  // Crown loop at top
+  const crG=new THREE.TorusGeometry(0.17,0.06,8,22);
+  const cr=new THREE.Mesh(crG,dM);cr.rotation.x=Math.PI/2;cr.position.y=1.38;bG.add(cr);
+
+  // Decorative ridge band
+  const rdG=new THREE.TorusGeometry(0.58,0.042,8,52);
+  const rd=new THREE.Mesh(rdG,dM);rd.position.y=0.1;bG.add(rd);
+
+  // Upper ridge
+  const rdG2=new THREE.TorusGeometry(0.24,0.032,8,36);
+  const rd2=new THREE.Mesh(rdG2,dM);rd2.position.y=0.9;bG.add(rd2);
+
+  // Clapper
+  const clG=new THREE.Group();clG.position.y=-0.15;bG.add(clG);
+  const stG=new THREE.CylinderGeometry(0.032,0.032,1.0,8);
+  const st=new THREE.Mesh(stG,dM);st.position.y=-0.5;clG.add(st);
+  const blG=new THREE.SphereGeometry(0.14,14,14);
+  const blM=new THREE.MeshStandardMaterial({color:0x8B6914,metalness:0.82,roughness:0.22});
+  const bl2=new THREE.Mesh(blG,blM);bl2.position.y=-1.02;clG.add(bl2);
+
+  // Specular highlight sphere
+  const spM=new THREE.MeshStandardMaterial({color:0xF0D080,metalness:1,roughness:0.04,transparent:true,opacity:0.3});
+  const sp=new THREE.Mesh(new THREE.SphereGeometry(0.26,8,8),spM);sp.position.set(0.38,0.65,0.52);bG.add(sp);
+
+  // Floating particles
+  const iG=new THREE.IcosahedronGeometry(0.07,0);
+  const iM=new THREE.MeshStandardMaterial({color:0xF0D080,metalness:1,roughness:0.08,emissive:0xC9A84C,emissiveIntensity:0.45});
+  const flt=[];
+  for(let i=0;i<24;i++){
+    const m=new THREE.Mesh(iG,iM);
+    m.position.set((Math.random()-.5)*11,(Math.random()-.5)*6,(Math.random()-.5)*4-2);
+    m.userData={rx:(Math.random()-.5)*.024,ry:(Math.random()-.5)*.024,oy:m.position.y,sp:Math.random()*.6+.3,ph:Math.random()*Math.PI*2};
+    scene.add(m);flt.push(m);
+  }
+  for(let i=0;i<7;i++){
+    const rng=new THREE.Mesh(new THREE.TorusGeometry(.55,.012,6,50),new THREE.MeshStandardMaterial({color:0xC9A84C,metalness:1,roughness:.2,transparent:true,opacity:.32}));
+    rng.position.set((Math.random()-.5)*10,(Math.random()-.5)*5,(Math.random()-.5)*3-1);
+    rng.rotation.set(Math.random()*Math.PI,Math.random()*Math.PI,0);
+    rng.userData={rs:(Math.random()-.5)*.011};
+    scene.add(rng);flt.push(rng);
+  }
+
+  window.addEventListener('resize',()=>{cam.aspect=innerWidth/innerHeight;cam.updateProjectionMatrix();rend.setSize(innerWidth,innerHeight);});
+
+  let t3=0,mx=0,my=0;
+  document.addEventListener('mousemove',e=>{mx=(e.clientX/innerWidth-.5)*2;my=(e.clientY/innerHeight-.5)*2;});
+
+  (function loop(){
+    requestAnimationFrame(loop);t3+=.01;
+    bG.rotation.z=Math.sin(t3*1.1)*.11;
+    bG.rotation.y=Math.sin(t3*.42)*.16;
+    bG.position.y=-.2+Math.sin(t3*.58)*.13;
+    clG.rotation.z=-Math.sin(t3*1.1)*.22;
+    kL.intensity=3.2+Math.sin(t3*1.9)*.55;
+    cam.position.x+=(mx*.55-cam.position.x)*.022;
+    cam.position.y+=(-my*.32-cam.position.y)*.022;
+    cam.lookAt(0,0,0);
+    flt.forEach(f=>{
+      if(f.userData.rx!==undefined){f.rotation.x+=f.userData.rx;f.rotation.y+=f.userData.ry;}
+      if(f.userData.oy!==undefined) f.position.y=f.userData.oy+Math.sin(t3*f.userData.sp+f.userData.ph)*.28;
+      if(f.userData.rs!==undefined){f.rotation.x+=f.userData.rs;f.rotation.y+=f.userData.rs*.7;}
+    });
+    rend.render(scene,cam);
+  })();
+})();
+
+/* ── CURTAIN OPEN ── */
+window.addEventListener('load',()=>{
+  const cL=document.getElementById('c-left'),cR=document.getElementById('c-right'),cW=document.getElementById('curtain-wrap');
+  const hC=document.getElementById('heroContent'),sC=document.getElementById('scrollCue');
+  setTimeout(()=>{
+    cL.classList.add('open');cR.classList.add('open');
+    setTimeout(()=>{hC.classList.add('visible');sC.classList.add('visible');},720);
+    setTimeout(()=>cW.classList.add('done'),2200);
+  },250);
+});
+
+/* ── COUNTDOWN ── */
+function tick(){
+  const ev=new Date(2026,4,21,11,0,0),now=new Date(),d=ev-now;
+  if(d<=0){['d','h','m','s'].forEach(id=>document.getElementById('cd-'+id).textContent='00');return;}
+  const dy=Math.floor(d/86400000),h=Math.floor(d%86400000/3600000),m=Math.floor(d%3600000/60000),s=Math.floor(d%60000/1000);
+  document.getElementById('cd-d').textContent=String(dy).padStart(2,'0');
+  document.getElementById('cd-h').textContent=String(h).padStart(2,'0');
+  document.getElementById('cd-m').textContent=String(m).padStart(2,'0');
+  document.getElementById('cd-s').textContent=String(s).padStart(2,'0');
+}
+tick();setInterval(tick,1000);
+
+/* ── SCROLL REVEAL ── */
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ── PARALLAX ── */
+window.addEventListener('scroll',()=>{
+  const y=scrollY,tc=document.getElementById('three-canvas');
+  if(tc)tc.style.transform=`translateY(${y*.22}px)`;
+});
+</script>
+</body>
+</html>
