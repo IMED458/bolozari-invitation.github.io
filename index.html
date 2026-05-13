@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ბოლო ზარი - მე-12 გ კლასი 2026</title>
+<title>ბოლო ზარი — მე-12 გ კლასი 2026</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap');
 
@@ -103,7 +103,30 @@ nav{
   align-items:center;justify-content:center;
   text-align:center;position:relative;overflow:hidden;padding:20px;
 }
-#three-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;}
+.grad-accent-layer{position:absolute;inset:0;z-index:2;pointer-events:none;overflow:hidden;}
+.grad-accent{
+  position:absolute;width:clamp(34px,5vw,58px);height:auto;
+  opacity:.56;filter:drop-shadow(0 8px 14px rgba(0,0,0,.45));
+  animation:floatGrad 7s ease-in-out infinite;
+}
+.grad-accent.cap{color:#D6B65A;}
+.grad-accent.diploma{color:#F8F4EE;}
+.grad-accent.bell{color:#C9A84C;}
+.ga1{left:7%;top:20%;transform:rotate(-18deg);animation-delay:-1s;}
+.ga2{left:18%;top:66%;transform:rotate(12deg);animation-delay:-3s;}
+.ga3{left:31%;top:18%;transform:rotate(16deg);animation-delay:-5s;}
+.ga4{left:39%;top:62%;transform:rotate(-10deg);animation-delay:-2s;}
+.ga5{left:58%;top:17%;transform:rotate(-15deg);animation-delay:-4s;}
+.ga6{left:69%;top:67%;transform:rotate(14deg);animation-delay:-6s;}
+.ga7{right:8%;top:22%;transform:rotate(18deg);animation-delay:-2.5s;}
+.ga8{right:13%;top:69%;transform:rotate(-12deg);animation-delay:-4.5s;}
+.ga9{left:5%;top:76%;transform:rotate(20deg);animation-delay:-6.5s;}
+.ga10{right:4%;top:48%;transform:rotate(-18deg);animation-delay:-1.8s;}
+.ga11{left:12%;top:42%;transform:rotate(-9deg);animation-delay:-5.5s;}
+.ga12{left:50%;top:72%;transform:rotate(11deg);animation-delay:-2.8s;}
+.ga13{right:24%;top:36%;transform:rotate(-14deg);animation-delay:-6.8s;}
+.ga14{right:31%;top:78%;transform:rotate(16deg);animation-delay:-3.7s;}
+@keyframes floatGrad{0%,100%{translate:0 0;}50%{translate:0 -16px;}}
 .hero-content{position:relative;z-index:5;opacity:0;transition:opacity 1.2s ease 0.4s;}
 .hero-content.visible{opacity:1;}
 
@@ -218,7 +241,7 @@ section{position:relative;z-index:2;}
 .sl{margin-top:48px;max-width:580px;margin-left:auto;margin-right:auto;}
 .si{display:flex;gap:22px;align-items:flex-start;padding:22px 0;border-bottom:1px solid rgba(201,168,76,0.11);}
 .si:last-child{border-bottom:none;}
-.st{font-family:Arial,Helvetica,sans-serif;font-size:1.4rem;color:var(--gold);min-width:76px;font-weight:400;line-height:1;}
+.st{font-family:Arial,Helvetica,sans-serif;font-size:1.4rem;color:var(--gold);min-width:98px;font-weight:400;line-height:1;}
 .si h4{font-size:0.8rem;letter-spacing:0.05em;margin-bottom:4px;}
 .si p{font-size:0.7rem;color:var(--white-dim);line-height:1.65;}
 .digits{font-family:Arial,Helvetica,sans-serif!important;font-weight:400;}
@@ -276,7 +299,22 @@ footer{
 
 <!-- ══ HERO ══ -->
 <section id="hero">
-  <canvas id="three-canvas"></canvas>
+  <div class="grad-accent-layer" aria-hidden="true">
+    <svg class="grad-accent cap ga1" viewBox="0 0 120 80"><path fill="currentColor" d="M60 8 6 31l54 23 46-19v25h7V31L60 8Z"/><path fill="#17131B" d="M28 43v16c0 8 15 15 32 15s32-7 32-15V43L60 56 28 43Z"/><path fill="#F0D080" d="M106 62c-5 8-5 13-2 16 5-3 9-8 9-16h-7Z"/></svg>
+    <svg class="grad-accent diploma ga2" viewBox="0 0 120 80"><path fill="currentColor" d="M24 28c0-10 8-18 18-18h46c5 0 8 4 8 8v34c0 10-8 18-18 18H32c-5 0-8-4-8-8V28Z"/><path fill="#D8C28F" d="M39 15h46c-7 5-10 13-10 24s3 20 10 26H39c-7-6-10-15-10-26s3-19 10-24Z"/><path fill="#9B1E1E" d="M70 22h10v42H70z"/><path fill="#F0D080" d="M62 39c0-9 7-16 16-16s16 7 16 16-7 16-16 16-16-7-16-16Zm8 0c0 4 4 8 8 8s8-4 8-8-4-8-8-8-8 4-8 8Z"/></svg>
+    <svg class="grad-accent bell ga3" viewBox="0 0 120 100"><path fill="currentColor" d="M60 7c8 0 14 6 14 14v4c17 7 25 24 25 45v8H21v-8c0-21 8-38 25-45v-4c0-8 6-14 14-14Z"/><path fill="#F0D080" d="M16 76h88c0 8-8 14-20 16H36c-12-2-20-8-20-16Z"/><circle cx="60" cy="89" r="8" fill="#8B6914"/><path fill="rgba(255,255,255,.36)" d="M72 24c11 8 16 23 16 43h-9c0-17-4-29-12-36l5-7Z"/></svg>
+    <svg class="grad-accent cap ga4" viewBox="0 0 120 80"><path fill="currentColor" d="M60 8 6 31l54 23 46-19v25h7V31L60 8Z"/><path fill="#17131B" d="M28 43v16c0 8 15 15 32 15s32-7 32-15V43L60 56 28 43Z"/><path fill="#F0D080" d="M106 62c-5 8-5 13-2 16 5-3 9-8 9-16h-7Z"/></svg>
+    <svg class="grad-accent diploma ga5" viewBox="0 0 120 80"><path fill="currentColor" d="M24 28c0-10 8-18 18-18h46c5 0 8 4 8 8v34c0 10-8 18-18 18H32c-5 0-8-4-8-8V28Z"/><path fill="#D8C28F" d="M39 15h46c-7 5-10 13-10 24s3 20 10 26H39c-7-6-10-15-10-26s3-19 10-24Z"/><path fill="#9B1E1E" d="M70 22h10v42H70z"/><path fill="#F0D080" d="M62 39c0-9 7-16 16-16s16 7 16 16-7 16-16 16-16-7-16-16Zm8 0c0 4 4 8 8 8s8-4 8-8-4-8-8-8-8 4-8 8Z"/></svg>
+    <svg class="grad-accent bell ga6" viewBox="0 0 120 100"><path fill="currentColor" d="M60 7c8 0 14 6 14 14v4c17 7 25 24 25 45v8H21v-8c0-21 8-38 25-45v-4c0-8 6-14 14-14Z"/><path fill="#F0D080" d="M16 76h88c0 8-8 14-20 16H36c-12-2-20-8-20-16Z"/><circle cx="60" cy="89" r="8" fill="#8B6914"/><path fill="rgba(255,255,255,.36)" d="M72 24c11 8 16 23 16 43h-9c0-17-4-29-12-36l5-7Z"/></svg>
+    <svg class="grad-accent cap ga7" viewBox="0 0 120 80"><path fill="currentColor" d="M60 8 6 31l54 23 46-19v25h7V31L60 8Z"/><path fill="#17131B" d="M28 43v16c0 8 15 15 32 15s32-7 32-15V43L60 56 28 43Z"/><path fill="#F0D080" d="M106 62c-5 8-5 13-2 16 5-3 9-8 9-16h-7Z"/></svg>
+    <svg class="grad-accent diploma ga8" viewBox="0 0 120 80"><path fill="currentColor" d="M24 28c0-10 8-18 18-18h46c5 0 8 4 8 8v34c0 10-8 18-18 18H32c-5 0-8-4-8-8V28Z"/><path fill="#D8C28F" d="M39 15h46c-7 5-10 13-10 24s3 20 10 26H39c-7-6-10-15-10-26s3-19 10-24Z"/><path fill="#9B1E1E" d="M70 22h10v42H70z"/><path fill="#F0D080" d="M62 39c0-9 7-16 16-16s16 7 16 16-7 16-16 16-16-7-16-16Zm8 0c0 4 4 8 8 8s8-4 8-8-4-8-8-8-8 4-8 8Z"/></svg>
+    <svg class="grad-accent bell ga9" viewBox="0 0 120 100"><path fill="currentColor" d="M60 7c8 0 14 6 14 14v4c17 7 25 24 25 45v8H21v-8c0-21 8-38 25-45v-4c0-8 6-14 14-14Z"/><path fill="#F0D080" d="M16 76h88c0 8-8 14-20 16H36c-12-2-20-8-20-16Z"/><circle cx="60" cy="89" r="8" fill="#8B6914"/><path fill="rgba(255,255,255,.36)" d="M72 24c11 8 16 23 16 43h-9c0-17-4-29-12-36l5-7Z"/></svg>
+    <svg class="grad-accent cap ga10" viewBox="0 0 120 80"><path fill="currentColor" d="M60 8 6 31l54 23 46-19v25h7V31L60 8Z"/><path fill="#17131B" d="M28 43v16c0 8 15 15 32 15s32-7 32-15V43L60 56 28 43Z"/><path fill="#F0D080" d="M106 62c-5 8-5 13-2 16 5-3 9-8 9-16h-7Z"/></svg>
+    <svg class="grad-accent diploma ga11" viewBox="0 0 120 80"><path fill="currentColor" d="M24 28c0-10 8-18 18-18h46c5 0 8 4 8 8v34c0 10-8 18-18 18H32c-5 0-8-4-8-8V28Z"/><path fill="#D8C28F" d="M39 15h46c-7 5-10 13-10 24s3 20 10 26H39c-7-6-10-15-10-26s3-19 10-24Z"/><path fill="#9B1E1E" d="M70 22h10v42H70z"/><path fill="#F0D080" d="M62 39c0-9 7-16 16-16s16 7 16 16-7 16-16 16-16-7-16-16Zm8 0c0 4 4 8 8 8s8-4 8-8-4-8-8-8-8 4-8 8Z"/></svg>
+    <svg class="grad-accent diploma ga12" viewBox="0 0 120 80"><path fill="currentColor" d="M24 28c0-10 8-18 18-18h46c5 0 8 4 8 8v34c0 10-8 18-18 18H32c-5 0-8-4-8-8V28Z"/><path fill="#D8C28F" d="M39 15h46c-7 5-10 13-10 24s3 20 10 26H39c-7-6-10-15-10-26s3-19 10-24Z"/><path fill="#9B1E1E" d="M70 22h10v42H70z"/><path fill="#F0D080" d="M62 39c0-9 7-16 16-16s16 7 16 16-7 16-16 16-16-7-16-16Zm8 0c0 4 4 8 8 8s8-4 8-8-4-8-8-8-8 4-8 8Z"/></svg>
+    <svg class="grad-accent diploma ga13" viewBox="0 0 120 80"><path fill="currentColor" d="M24 28c0-10 8-18 18-18h46c5 0 8 4 8 8v34c0 10-8 18-18 18H32c-5 0-8-4-8-8V28Z"/><path fill="#D8C28F" d="M39 15h46c-7 5-10 13-10 24s3 20 10 26H39c-7-6-10-15-10-26s3-19 10-24Z"/><path fill="#9B1E1E" d="M70 22h10v42H70z"/><path fill="#F0D080" d="M62 39c0-9 7-16 16-16s16 7 16 16-7 16-16 16-16-7-16-16Zm8 0c0 4 4 8 8 8s8-4 8-8-4-8-8-8-8 4-8 8Z"/></svg>
+    <svg class="grad-accent diploma ga14" viewBox="0 0 120 80"><path fill="currentColor" d="M24 28c0-10 8-18 18-18h46c5 0 8 4 8 8v34c0 10-8 18-18 18H32c-5 0-8-4-8-8V28Z"/><path fill="#D8C28F" d="M39 15h46c-7 5-10 13-10 24s3 20 10 26H39c-7-6-10-15-10-26s3-19 10-24Z"/><path fill="#9B1E1E" d="M70 22h10v42H70z"/><path fill="#F0D080" d="M62 39c0-9 7-16 16-16s16 7 16 16-7 16-16 16-16-7-16-16Zm8 0c0 4 4 8 8 8s8-4 8-8-4-8-8-8-8 4-8 8Z"/></svg>
+  </div>
   <div class="hero-content" id="heroContent">
     <p class="h-eyebrow">გიწვევთ ბოლო ზარზე</p>
     <h1 class="h-title">
@@ -290,6 +328,8 @@ footer{
       <span>2026 წელი</span>
       <div class="sep"></div>
       <span>თელავი</span>
+      <div class="sep"></div>
+      <span>11 სთ</span>
     </div>
   </div>
   <div class="scroll-cue" id="scrollCue">
@@ -328,10 +368,10 @@ footer{
         საზეიმო ღონისძიებაზე
       </h2>
       <p class="inv-body">
-        ეს არის განსაკუთრებული დღე - სავსე სიხარულით,<br>
+        ეს არის განსაკუთრებული საღამო — სავსე სიხარულით,<br>
         მოგონებებით და გრძნობებით, რომელიც სიტყვებს სცდება.
       </p>
-      <p class="inv-sig">- სიყვარულით, მე-12 გ კლასი ✦</p>
+      <p class="inv-sig">— სიყვარულით, მე-12 გ კლასი ✦</p>
     </div>
   </div>
 </section>
@@ -362,12 +402,9 @@ footer{
     <p class="s-eye reveal">პროგრამა</p>
     <h2 class="s-ttl reveal">დღის <em style="color:var(--gold);font-style:italic;font-family:'Cormorant Garamond',serif">განრიგი</em></h2>
     <div class="sl">
-      <div class="si reveal d1"><div class="st">11:00</div><div><h4>კარის გახსნა</h4><p>სტუმრების მიღება · სადღესასწაულო ატმოსფერო</p></div></div>
-      <div class="si reveal d2"><div class="st">-:-</div><div><h4>ზეიმის გახსნა</h4><p>სიტყვა · მისალმება · კლასის ისტორია</p></div></div>
-      <div class="si reveal d3"><div class="st">-:-</div><div><h4>სადღეგრძელოები & სუფრა</h4><p>საზეიმო ვახშამი · ტოსტები · მოგონებები</p></div></div>
-      <div class="si reveal d4"><div class="st">-:-</div><div><h4>კონცერტი & ცეკვა</h4><p>ლაივ მუსიკა · სპეციალური ნომრები</p></div></div>
-      <div class="si reveal d2"><div class="st">-:-</div><div><h4>სიურპრიზი 🎁</h4><p>განსაკუთრებული მომენტი</p></div></div>
-      <div class="si reveal d3"><div class="st">-:-</div><div><h4>ბოლო ზარი 🔔</h4><p>სიმბოლური მომენტი - ყველა ერთად</p></div></div>
+      <div class="si reveal d1"><div class="st">11:00 სთ</div><div><h4>კარის გახსნა</h4><p>სტუმრების მიღება · სამახსოვრო წარწერები</p></div></div>
+      <div class="si reveal d2"><div class="st">12:00</div><div><h4>ღონისძიების დასაწყისი</h4><p>სიტყვა · მისალმება · კლასის ისტორია</p></div></div>
+      <div class="si reveal d3"><div class="st">-:-</div><div><h4>ბოლო ზარი ...</h4><p>სიმბოლური მომენტი — ყველა ერთად</p></div></div>
     </div>
   </div>
 </section>
@@ -378,7 +415,7 @@ footer{
 <section id="finale">
   <div class="fin-orn reveal">✦</div>
   <blockquote class="fin-q reveal">
-    „ბოლო ზარი -<br>
+    „ბოლო ზარი —<br>
     <em>დასასრული</em>, რომელიც<br>
     ახალ <em>დასაწყისს</em> ნიშნავს"
   </blockquote>
@@ -393,132 +430,23 @@ footer{
 
 <footer>© 2026 · მე-12 გ კლასი · სსიპ N4 საჯარო სკოლა, თელავი ✦ created by DR.IMEDO🩺</footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
 /* ── BACKGROUND STARS ── */
 const bgC=document.getElementById('bg-canvas'),bgX=bgC.getContext('2d');
 let BW,BH;
 function bgR(){BW=bgC.width=window.innerWidth;BH=bgC.height=window.innerHeight;}
 bgR();window.addEventListener('resize',bgR);
-const bS=Array.from({length:220},()=>({x:Math.random(),y:Math.random(),r:Math.random()*1.1+0.2,t:Math.random()*Math.PI*2,sp:Math.random()*0.018+0.004}));
-const gP=Array.from({length:35},()=>({x:Math.random()*window.innerWidth,y:Math.random()*window.innerHeight,vy:-(Math.random()*0.4+0.12),life:Math.random(),r:Math.random()*1.6+0.3}));
+const bS=Array.from({length:170},()=>({x:Math.random(),y:Math.random(),r:Math.random()*1.05+0.16,t:Math.random()*Math.PI*2,sp:Math.random()*0.014+0.003}));
+const gP=Array.from({length:18},()=>({x:Math.random()*window.innerWidth,y:Math.random()*window.innerHeight,vy:-(Math.random()*0.28+0.08),life:Math.random(),r:Math.random()*1.2+0.25}));
 let bT=0;
 (function bl(){
   bT+=0.008;bgX.clearRect(0,0,BW,BH);
   const g=bgX.createRadialGradient(BW*.5,BH*.3,0,BW*.5,BH*.5,BH);
   g.addColorStop(0,'rgba(15,10,30,0.97)');g.addColorStop(1,'rgba(8,8,16,0.99)');
   bgX.fillStyle=g;bgX.fillRect(0,0,BW,BH);
-  for(const s of bS){s.t+=s.sp;const a=(Math.sin(s.t)*0.32+0.68)*0.82;bgX.beginPath();bgX.arc(s.x*BW,s.y*BH,s.r,0,Math.PI*2);bgX.fillStyle=`rgba(248,244,238,${a})`;bgX.fill();}
-  for(const d of gP){d.life+=0.003;d.y+=d.vy;if(d.life>1){d.life=0;d.x=Math.random()*BW;d.y=BH+10;}const a=Math.sin(d.life*Math.PI)*0.45;bgX.beginPath();bgX.arc(d.x,d.y,d.r,0,Math.PI*2);bgX.fillStyle=`rgba(201,168,76,${a})`;bgX.fill();}
+  for(const s of bS){s.t+=s.sp;const a=(Math.sin(s.t)*0.32+0.68)*0.72;bgX.beginPath();bgX.arc(s.x*BW,s.y*BH,s.r,0,Math.PI*2);bgX.fillStyle=`rgba(248,244,238,${a})`;bgX.fill();}
+  for(const d of gP){d.life+=0.003;d.y+=d.vy;if(d.life>1){d.life=0;d.x=Math.random()*BW;d.y=BH+10;}const a=Math.sin(d.life*Math.PI)*0.34;bgX.beginPath();bgX.arc(d.x,d.y,d.r,0,Math.PI*2);bgX.fillStyle=`rgba(201,168,76,${a})`;bgX.fill();}
   requestAnimationFrame(bl);
-})();
-
-/* ── THREE.JS BELL ── */
-(function(){
-  const tc=document.getElementById('three-canvas');
-  const rend=new THREE.WebGLRenderer({canvas:tc,antialias:true,alpha:true});
-  rend.setPixelRatio(Math.min(devicePixelRatio,2));
-  rend.setSize(innerWidth,innerHeight);rend.setClearColor(0,0);
-  const scene=new THREE.Scene();
-  const cam=new THREE.PerspectiveCamera(52,innerWidth/innerHeight,0.1,100);
-  cam.position.set(0,0,6.5);
-
-  scene.add(new THREE.AmbientLight(0xffffff,0.22));
-  const kL=new THREE.PointLight(0xF0D080,3.2,20);kL.position.set(4,5,4);scene.add(kL);
-  const fL=new THREE.PointLight(0x8B1A1A,0.9,12);fL.position.set(-4,-2,2);scene.add(fL);
-  const rL=new THREE.DirectionalLight(0xffffff,0.25);rL.position.set(-2,3,-2);scene.add(rL);
-
-  const gM=new THREE.MeshStandardMaterial({color:0xC9A84C,metalness:0.92,roughness:0.16});
-  const dM=new THREE.MeshStandardMaterial({color:0x7A5010,metalness:0.85,roughness:0.28});
-
-  // Bell group - shifted RIGHT of center (x=2.6) so text is unobstructed
-  const bG=new THREE.Group();
-  bG.position.set(2.8,-0.2,0);
-  scene.add(bG);
-
-  // True bell profile: narrow top, wide flared bottom
-  const pts=[];
-  for(let i=0;i<=36;i++){
-    const t=i/36; // 0=top(narrow), 1=bottom(wide, open)
-    let r;
-    if(t<0.12) r=0.10+t*1.2;           // thin neck
-    else if(t<0.3) r=0.24+(t-0.12)*0.6; // gradual curve
-    else r=0.35+Math.pow((t-0.3)/0.7,0.5)*1.05; // strong flare
-    pts.push(new THREE.Vector2(r, t*2.4-1.2));
-  }
-  const bGeo=new THREE.LatheGeometry(pts,52);
-  const bMesh=new THREE.Mesh(bGeo,gM);
-  bMesh.rotation.x=Math.PI; // open end faces down
-  bG.add(bMesh);
-
-  // Rim ring at open end
-  const rimG=new THREE.TorusGeometry(1.38,0.09,12,52);
-  const rim=new THREE.Mesh(rimG,gM);rim.position.y=-1.2;bG.add(rim);
-
-  // Crown loop at top
-  const crG=new THREE.TorusGeometry(0.17,0.06,8,22);
-  const cr=new THREE.Mesh(crG,dM);cr.rotation.x=Math.PI/2;cr.position.y=1.38;bG.add(cr);
-
-  // Decorative ridge band
-  const rdG=new THREE.TorusGeometry(0.58,0.042,8,52);
-  const rd=new THREE.Mesh(rdG,dM);rd.position.y=0.1;bG.add(rd);
-
-  // Upper ridge
-  const rdG2=new THREE.TorusGeometry(0.24,0.032,8,36);
-  const rd2=new THREE.Mesh(rdG2,dM);rd2.position.y=0.9;bG.add(rd2);
-
-  // Clapper
-  const clG=new THREE.Group();clG.position.y=-0.15;bG.add(clG);
-  const stG=new THREE.CylinderGeometry(0.032,0.032,1.0,8);
-  const st=new THREE.Mesh(stG,dM);st.position.y=-0.5;clG.add(st);
-  const blG=new THREE.SphereGeometry(0.14,14,14);
-  const blM=new THREE.MeshStandardMaterial({color:0x8B6914,metalness:0.82,roughness:0.22});
-  const bl2=new THREE.Mesh(blG,blM);bl2.position.y=-1.02;clG.add(bl2);
-
-  // Specular highlight sphere
-  const spM=new THREE.MeshStandardMaterial({color:0xF0D080,metalness:1,roughness:0.04,transparent:true,opacity:0.3});
-  const sp=new THREE.Mesh(new THREE.SphereGeometry(0.26,8,8),spM);sp.position.set(0.38,0.65,0.52);bG.add(sp);
-
-  // Floating particles
-  const iG=new THREE.IcosahedronGeometry(0.07,0);
-  const iM=new THREE.MeshStandardMaterial({color:0xF0D080,metalness:1,roughness:0.08,emissive:0xC9A84C,emissiveIntensity:0.45});
-  const flt=[];
-  for(let i=0;i<24;i++){
-    const m=new THREE.Mesh(iG,iM);
-    m.position.set((Math.random()-.5)*11,(Math.random()-.5)*6,(Math.random()-.5)*4-2);
-    m.userData={rx:(Math.random()-.5)*.024,ry:(Math.random()-.5)*.024,oy:m.position.y,sp:Math.random()*.6+.3,ph:Math.random()*Math.PI*2};
-    scene.add(m);flt.push(m);
-  }
-  for(let i=0;i<7;i++){
-    const rng=new THREE.Mesh(new THREE.TorusGeometry(.55,.012,6,50),new THREE.MeshStandardMaterial({color:0xC9A84C,metalness:1,roughness:.2,transparent:true,opacity:.32}));
-    rng.position.set((Math.random()-.5)*10,(Math.random()-.5)*5,(Math.random()-.5)*3-1);
-    rng.rotation.set(Math.random()*Math.PI,Math.random()*Math.PI,0);
-    rng.userData={rs:(Math.random()-.5)*.011};
-    scene.add(rng);flt.push(rng);
-  }
-
-  window.addEventListener('resize',()=>{cam.aspect=innerWidth/innerHeight;cam.updateProjectionMatrix();rend.setSize(innerWidth,innerHeight);});
-
-  let t3=0,mx=0,my=0;
-  document.addEventListener('mousemove',e=>{mx=(e.clientX/innerWidth-.5)*2;my=(e.clientY/innerHeight-.5)*2;});
-
-  (function loop(){
-    requestAnimationFrame(loop);t3+=.01;
-    bG.rotation.z=Math.sin(t3*1.1)*.11;
-    bG.rotation.y=Math.sin(t3*.42)*.16;
-    bG.position.y=-.2+Math.sin(t3*.58)*.13;
-    clG.rotation.z=-Math.sin(t3*1.1)*.22;
-    kL.intensity=3.2+Math.sin(t3*1.9)*.55;
-    cam.position.x+=(mx*.55-cam.position.x)*.022;
-    cam.position.y+=(-my*.32-cam.position.y)*.022;
-    cam.lookAt(0,0,0);
-    flt.forEach(f=>{
-      if(f.userData.rx!==undefined){f.rotation.x+=f.userData.rx;f.rotation.y+=f.userData.ry;}
-      if(f.userData.oy!==undefined) f.position.y=f.userData.oy+Math.sin(t3*f.userData.sp+f.userData.ph)*.28;
-      if(f.userData.rs!==undefined){f.rotation.x+=f.userData.rs;f.rotation.y+=f.userData.rs*.7;}
-    });
-    rend.render(scene,cam);
-  })();
 })();
 
 /* ── CURTAIN OPEN ── */
@@ -550,8 +478,7 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
 /* ── PARALLAX ── */
 window.addEventListener('scroll',()=>{
-  const y=scrollY,tc=document.getElementById('three-canvas');
-  if(tc)tc.style.transform=`translateY(${y*.22}px)`;
+  document.querySelector('.grad-accent-layer').style.transform=`translateY(${scrollY*.08}px)`;
 });
 </script>
 </body>
